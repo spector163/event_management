@@ -34,3 +34,4 @@ A simple Event Management API built with TypeScript, Express.js, MySQL, and Pris
    ```
 3. Migrate with db:migrate
 4. Generate prismal client with db:generate
+5. To run locally use local script(dev also works)

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validate } from "../middlewares/validation.middleware.js";
-import { createUserSchema } from "../types/user.type.js";
+import { createUserSchema, getUserParamsSchema } from "../types/user.type.js";
 import {
 	createUserHandler,
 	getUserByIdHandler,
@@ -9,6 +9,6 @@ import {
 const router = Router();
 
 router.post("/", validate(createUserSchema), createUserHandler);
-router.get("/:id", getUserByIdHandler);
+router.get("/:id", validate(getUserParamsSchema), getUserByIdHandler);
 
 export default router;

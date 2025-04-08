@@ -28,6 +28,19 @@ export const createEventSchema = z.object({
 	}),
 });
 
+export const getEventQuerySchema = z.object({
+	query: z.object({
+		limit: z.coerce.number().optional().default(10),
+		offset: z.coerce.number().optional().default(0),
+	}),
+});
+export const eventIdParamsSchema = z.object({
+	params: z.object({
+		eventId: z.string().uuid(),
+	}),
+});
+export type eventIdParamsType = z.infer<typeof eventIdParamsSchema>["params"];
+export type eventQueryParamsType = z.infer<typeof getEventQuerySchema>["query"];
 export type CreateEventInput = z.infer<typeof createEventSchema>["body"] & {
 	createdBy: string;
 };

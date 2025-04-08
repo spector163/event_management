@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsc",
-		"start": "node dist/server.js",
+		"start": "pnpm run db:migrate && node dist/server.js",
 		"dev:tsc": "tsc --watch --preserveWatchOutput",
 		"dev:node": "node --watch --enable-source-maps dist/server.js",
 		"dev": "pnpm run \"/dev:/\"",

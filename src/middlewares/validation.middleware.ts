@@ -5,7 +5,14 @@ import { sendError } from "../utils/apiResponse.util.js";
 export const validate = (schema: ZodSchema) => {
 	return (req: Request, res: Response, next: NextFunction) => {
 		try {
-			schema.parse({ body: req.body, params: req.params, query: req.query });
+			const result = schema.parse({
+				body: req.body,
+				params: req.params,
+				query: req.query,
+			});
+			res.locals.body = result.body;
+			res.locals.query = result.query;
+			res.locals.params = result.params;
 			next();
 		} catch (e) {
 			if (e instanceof ZodError) {

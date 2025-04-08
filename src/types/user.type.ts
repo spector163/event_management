@@ -16,4 +16,11 @@ export const createUserSchema = z.object({
 	}),
 });
 
+export const getUserParamsSchema = z.object({
+	params: z.object({
+		id: z.string().uuid(),
+	}),
+});
+
+export type getUserParamsType = z.infer<typeof getUserParamsSchema>["params"];
 export type CreateUserInput = z.infer<typeof createUserSchema>["body"];

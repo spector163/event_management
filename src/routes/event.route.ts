@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authenticate } from "../middlewares/auth.middleware.js";
 import { validate } from "../middlewares/validation.middleware.js";
-import { createEventSchema } from "../types/event.type.js";
+import { createEventSchema, getEventQuerySchema } from "../types/event.type.js";
 import {
 	createEventHandler,
 	getEventsHandler,
@@ -10,6 +10,6 @@ import {
 const router = Router();
 
 router.post("/", authenticate, validate(createEventSchema), createEventHandler);
-router.get("/", getEventsHandler);
+router.get("/", validate(getEventQuerySchema), getEventsHandler);
 
 export default router;

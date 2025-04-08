@@ -8,7 +8,6 @@ export const joinEvent = async (eventId: string, userId: string) => {
 				userId,
 			},
 		});
-
 		if (existingAttendee) {
 			throw new Error("User is already attending this event");
 		}
